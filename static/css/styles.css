@@ -1,0 +1,501 @@
+/* CSS変数の定義 */
+:root {
+    --primary-color: #28a745; /* メインブランドカラー（緑） */
+    --secondary-color: #fd7e14; /* アクセントカラー（オレンジ） */
+    --text-color: #333333;
+    --background-color: #f8f9fa;
+    --font-family: 'Noto Sans JP', 'Inter', sans-serif;
+}
+
+/* グローバルリセットと基本設定 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ナビゲーションバー */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* メインコンテンツ */
+main {
+    flex: 1;
+    padding-top: 100px; /* ナビゲーションバーの高さ分の余白を追加 */
+}
+
+/* ヒーローセクション */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 10% 50px;
+    background: linear-gradient(to right, #fff, #eef2f3);
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #6c757d;
+}
+
+.hero-image {
+    max-width: 500px;
+    width: 100%;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+/* ボタンスタイル */
+.btn {
+    padding: 12px 24px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    font-size: 1em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 15px rgba(33, 136, 56, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #e8590c;
+    box-shadow: 0 4px 15px rgba(232, 89, 12, 0.3);
+}
+
+.custom-file-upload {
+    padding: 12px 24px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    font-size: 1em;
+    margin-right: 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-file-upload:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 15px rgba(33, 136, 56, 0.3);
+}
+
+#imageInput {
+    display: none;
+}
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(248, 249, 250, 0.9);
+    display: none; /* 初期状態で非表示 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* スピナーのスタイル */
+.spinner {
+    font-size: 80px;
+    color: var(--primary-color);
+    animation: spin 2s linear infinite;
+    margin-bottom: 20px;
+}
+
+.spinner i {
+    display: block;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ローディングメッセージ */
+#loading-message {
+    font-size: 1.2em;
+    color: #333333;
+    text-align: center;
+}
+
+.dot {
+    animation: dot-blink 1s infinite;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dot-blink {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* お肉の選択セクション */
+.meat-options {
+    padding: 40px 10%;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.meat-options h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #343a40;
+}
+
+.meat-options input[type="radio"] {
+    display: none;
+}
+
+.meat-choice {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.choice-content {
+    background-color: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+    width: 120px;
+}
+
+.choice-content:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.choice-content i {
+    font-size: 2.5em;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.choice-content span {
+    display: block;
+    font-size: 1em;
+    color: #6c757d;
+}
+
+/* 選択された場合のスタイル */
+.meat-options input[type="radio"]:checked + .choice-content {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.meat-options input[type="radio"]:checked + .choice-content i {
+    color: #ffffff;
+}
+
+.meat-options input[type="radio"]:checked + .choice-content span {
+    color: #ffffff;
+}
+
+/* 検出された食材セクション */
+.detected-ingredients {
+    padding: 40px 10%;
+    background-color: #f8f9fa;
+}
+
+.detected-ingredients h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.ingredients-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ingredient-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #e9ecef;
+    color: #495057;
+    border-radius: 30px;
+    font-size: 0.9em;
+    margin: 5px;
+}
+
+/* レシピセクション */
+.recipes-section {
+    padding: 60px 10%;
+    background-color: #fff;
+}
+
+.recipes-section h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: #343a40;
+}
+
+.recipes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.recipe-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-card img {
+    width: 100%;
+}
+
+.recipe-card h3 {
+    font-size: 1.5em;
+    padding: 15px;
+    color: #343a40;
+}
+
+.recipe-card p {
+    padding: 0 15px 15px 15px;
+    line-height: 1.5;
+    color: #6c757d;
+}
+
+.recipe-instructions {
+    margin-top: 10px;
+    padding: 0 15px 15px 15px;
+}
+
+.recipe-instructions h4 {
+    font-size: 1.2em;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.recipe-instructions ol {
+    padding-left: 20px;
+}
+
+.recipe-instructions li {
+    margin-bottom: 5px;
+    line-height: 1.5;
+    color: #495057;
+}
+
+/* フッター */
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px 10%;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+.socials {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.socials li a {
+    color: #ffffff;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.socials li a:hover {
+    color: var(--primary-color);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 10% 50px;
+    }
+
+    .hero-content,
+    .hero-image {
+        max-width: 100%;
+    }
+
+    .hero-image img {
+        width: 80%;
+        margin: 20px auto 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.4em;
+    }
+
+    .hero-content p {
+        font-size: 1.1em;
+    }
+
+    .logo {
+        font-size: 1.5em;
+    }
+
+    .logo img {
+        height: 30px;
+        margin-right: 8px;
+    }
+
+    .spinner {
+        font-size: 60px;
+    }
+
+    .choice-content {
+        width: 100px;
+        padding: 15px;
+    }
+
+    .choice-content i {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .custom-file-upload,
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .recipes-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recipe-card {
+        width: 100%;
+    }
+
+    .spinner {
+        font-size: 50px;
+    }
+}

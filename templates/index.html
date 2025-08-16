@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FridgeSnap</title>
+    <!-- フォントの読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesomeの読み込み -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- スタイルシートの読み込み -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- ファビコンの設定 -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <!-- ナビゲーションバー -->
+    <header>
+        <nav class="navbar" role="navigation" aria-label="メインナビゲーション">
+            <a href="/" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FridgeSnapのロゴ">
+                FridgeSnap
+            </a>
+        </nav>
+    </header>
+    <!-- ローディング画面 -->
+    <div id="loading-screen" role="status" aria-live="polite">
+        <div class="spinner" aria-hidden="true">
+            <i class="fas fa-bowl-food"></i>
+        </div>
+        <div id="loading-message">ただいま画像認識中です<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
+    </div>
+    <!-- メインコンテンツ -->
+    <main>
+        <!-- ヒーローセクション -->
+        <section class="hero" id="features">
+            <div class="hero-content">
+                <h1>冷蔵庫の中身から素敵なレシピを</h1>
+                <p>FridgeSnapで新しい料理のアイデアを発見しましょう。</p>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <label for="imageInput" class="custom-file-upload" aria-label="画像を選択"><i class="fas fa-camera"></i> 画像を選択</label>
+                    <input type="file" id="imageInput" name="image" accept="image/*">
+                    <button type="submit" class="btn btn-secondary"><i class="fas fa-utensils"></i> レシピを見る！</button>
+                </form>
+            </div>
+            <div class="hero-image">
+                <img id="uploadedImage" src="{{ url_for('static', filename='images/hero-image.png') }}" alt="料理のイメージ">
+            </div>
+        </section>
+        <!-- お肉の選択セクション -->
+        <section id="meat-options" class="meat-options">
+            <h2>お肉の種類を選んでください</h2>
+            <form id="meatForm">
+                <!-- ひき肉 -->
+                <label class="meat-choice">
+                    <input type="radio" name="meat_choice" value="ground meat">
+                    <div class="choice-content">
+                        <i class="fas fa-hamburger"></i>
+                        <span>ひき肉</span>
+                    </div>
+                </label>
+                <!-- 鶏むね肉 -->
+                <label class="meat-choice">
+                    <input type="radio" name="meat_choice" value="chicken breast">
+                    <div class="choice-content">
+                        <i class="fas fa-drumstick-bite"></i>
+                        <span>鶏むね肉</span>
+                    </div>
+                </label>
+                <!-- 鶏もも肉 -->
+                <label class="meat-choice">
+                    <input type="radio" name="meat_choice" value="chicken thigh">
+                    <div class="choice-content">
+                        <i class="fas fa-drumstick-bite"></i>
+                        <span>鶏もも肉</span>
+                    </div>
+                </label>
+                <!-- 牛切り落とし肉 -->
+                <label class="meat-choice">
+                    <input type="radio" name="meat_choice" value="sliced beef">
+                    <div class="choice-content">
+                        <i class="fas fa-cow"></i>
+                        <span>牛切り落とし肉</span>
+                    </div>
+                </label>
+                <!-- 豚ロースまたは豚肩ロース -->
+                <label class="meat-choice">
+                    <input type="radio" name="meat_choice" value="pork loin">
+                    <div class="choice-content">
+                        <i class="fas fa-piggy-bank"></i>
+                        <span>豚ロースまたは豚肩ロース</span>
+                    </div>
+                </label>
+                <button type="submit" class="btn btn-primary">選択</button>
+            </form>
+        </section>
+        <!-- 検出された食材セクション -->
+        <section id="detected-ingredients" class="detected-ingredients">
+            <h2>検出された食材</h2>
+            <!-- 食材のタグがここに表示されます -->
+            <div class="ingredients-list">
+                <!-- 例: -->
+                <!-- <span class="ingredient-tag">トマト</span> -->
+            </div>
+        </section>
+        <!-- レシピセクション -->
+        <section id="recipes" class="recipes-section">
+            <h2>おすすめレシピ</h2>
+            <div class="recipes-grid">
+                <!-- レシピカードがここに表示されます -->
+            </div>
+        </section>
+    </main>
+    <!-- フッター -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 FridgeSnap | A-team</p>
+            <ul class="socials">
+                <li><a href="#"><i class="fab fa-twitter" aria-label="Twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-facebook-f" aria-label="Facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram" aria-label="Instagram"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+    <!-- スクリプトの読み込み -->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/loading.js') }}"></script>
+</body>
+</html>

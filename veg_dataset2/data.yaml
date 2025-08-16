@@ -1,0 +1,6 @@
+train: C:/Users/kensho/lab/hackathon/scripts/veg_dataset2/images/train
+val: C:/Users/kensho/lab/hackathon/scripts/veg_dataset2/images/val
+
+
+nc: 21 #クラス数（アノテーションに含まれるクラス数）
+names: ["tomato", "lemon", "carrot", "eggplant", "milk", "broccoli", "Komatuna", "onion", "cabbage", "apple", "Konnyaku", "cucumber", "fish", "chikuwa", "egg", "meat", "potato", "ham", "bacon", "daikon", "orange"] #クラス名
